@@ -45,67 +45,6 @@ $dataAtual = date('d/m/Y');
           <div class="job"><?php echo htmlspecialchars($_SESSION['user']->cargo); ?></div>
         </div>
       </div>
-
-      <div class="icon-container">
-        <?php if ($cargo === 'Vendedor' || $cargo === 'Caixa'): ?>
-          <div class="icon-item">
-            <a href="venda.php">
-              <i class='bx bx-cart-alt'></i>
-              <span>Vendas</span>
-            </a>
-          </div>
-          <div class="icon-item">
-            <a href="../classe/acoes.php?action=logout">
-              <i class='bx bx-male'></i>
-              <span>Clientes</span>
-            </a>
-          </div>
-          <div class="icon-item">
-            <a href="../classe/acoes.php?action=logout">
-              <i class='bx bx-log-out'></i>
-              <span>Logout</span>
-            </a>
-          </div>
-        <?php elseif ($cargo === 'Estoquista'): ?>
-          <div class="icon-item">
-            <a href="produto.php">
-              <i class='bx bx-shopping-bag'></i>
-              <span>Produtos</span>
-            </a>
-          </div>
-          <div class="icon-item">
-            <a href="estoque.php">
-              <i class='bx bx-box'></i>
-              <span>Estoque</span>
-            </a>
-          </div>
-          <div class="icon-item">
-            <a href="../classe/acoes.php?action=logout">
-              <i class='bx bx-log-out'></i>
-              <span>Logout</span>
-            </a>
-          </div>
-        <?php elseif ($cargo === 'Gerente'): ?>
-          <div class="icon-item">
-            <a href="dashboard.php">
-              <i class='bx bx-grid-alt'></i>
-              <span>Dashboard</span>
-            </a>
-          </div>
-          <div class="icon-item">
-            <a href="#">
-              <i class='bx bx-task'></i>
-              <span>Relatórios</span>
-            </a>
-          </div>
-          <div class="icon-item">
-            <a href="../classe/acoes.php?action=logout">
-              <i class='bx bx-log-out'></i>
-              <span>Logout</span>
-            </a>
-          </div>
-        <?php endif; ?>
-      </div>
     </section>
   </section>
 

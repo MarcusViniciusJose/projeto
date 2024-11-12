@@ -162,23 +162,7 @@ $resultRankingProdutos = mysqli_query($conexao, $sqlRankingProdutos);
 						</table>
 					</div>
 
-					<div class="todo">
-						<div class="head">
-							<h3>Ranking Funcionários</h3>
-						</div>
-						<ul class="todo-list">
-							<?php
-							$posicao = 1;
-							while ($row = mysqli_fetch_assoc($resultRankingFuncionarios)) { ?>
-								<li>
-									<img src="../src/uploads/<?php echo $row['foto']; ?>" alt="<?php echo $row['funcionario']; ?>" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;">
-									<p><?php echo $posicao . "º " . $row['funcionario']; ?> - R$ <?php echo number_format($row['total_vendas'], 2, ',', '.'); ?></p>
-								</li>
-							<?php
-								$posicao++;
-							} ?>
-						</ul>
-					</div>
+					<!-- Ranking Produtos -->
 					<div class="todo">
 						<div class="head">
 							<h3>Ranking Produtos</h3>
@@ -195,8 +179,26 @@ $resultRankingProdutos = mysqli_query($conexao, $sqlRankingProdutos);
 								$posicao++;
 							} ?>
 						</ul>
+
+						<!-- Ranking Funcionarios -->
+						<div class="head">
+							<h3>Ranking Funcionários</h3>
+						</div>
+						<ul class="todo-list">
+							<?php
+							$posicao = 1;
+							while ($row = mysqli_fetch_assoc($resultRankingFuncionarios)) { ?>
+								<li>
+									<img src="../src/uploads/<?php echo $row['foto']; ?>" alt="<?php echo $row['funcionario']; ?>" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px; border-radius: 50%;">
+									<p><?php echo $posicao . "º " . $row['funcionario']; ?> - R$ <?php echo number_format($row['total_vendas'], 2, ',', '.'); ?></p>
+								</li>
+							<?php
+								$posicao++;
+							} ?>
+						</ul>
 					</div>
 
+					
 				</div>
 			</main>
 		</section>

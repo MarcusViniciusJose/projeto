@@ -1,7 +1,3 @@
-<?php
-include_once '../classe/conexao.php';
-?>
-
 <!doctype html>
 <html lang="pt-br">
 
@@ -14,41 +10,55 @@ include_once '../classe/conexao.php';
     <!-- ICONES BOOTSTRAP -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../src/css/relatorio.css">
 </head>
 
 <body>
     <?php include('../src/template/sidebar.php'); ?>
     <section class="home-section">
-        <section class="main-container">
-            <div>
-                <label>10 Produtos mais vendidos</label>
-                <a href="#" class="btn-download">
-                    <span class="text">Download PDF</span>
-                </a>
-            </div>
-            <div>
-                <label>Vendas realizadas</label>
-                <a href="#" class="btn-download">
-                    <span class="text">Download PDF</span>
-                </a>
-            </div>
-            <div>
-                <label>Estoque</label>
-                <a href="#" class="btn-download">
-                    <span class="text">Download PDF</span>
-                </a>
-            </div>
-            <div>
-                <label>Funcionários que mais venderam</label>
-                <a href="#" class="btn-download">
-                    <span class="text">Download PDF</span>
-                </a>
-            </div>
-            <div>
-                <label>Clientes cadastrados</label>
-                <a href="#" class="btn-download">
-                    <span class="text">Download PDF</span>
-                </a>
+        <section class="main-container container">
+            <h2 class="text-center mt-4 mb-5">Painel de Relatórios e Desempenho</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="report-card">
+                        <label>Produtos Mais Vendidos</label>
+                        <a href="#" class="btn-download">
+                            <span class="text">Download PDF</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="report-card">
+                        <label>Vendas Realizadas</label>
+                        <a href="#" class="btn-download">
+                            <span class="text">Download PDF</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="report-card">
+                        <label>Status do Estoque</label>
+                        <a href="#" class="btn-download">
+                            <span class="text">Download PDF</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="report-card">
+                        <label>Vendas por Funcionário</label>
+                        <a href="#" class="btn-download">
+                            <span class="text">Download PDF</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="report-card">
+                        <label>Clientes Cadastrados</label>
+                        <a href="#" class="btn-download">
+                            <span class="text">Download PDF</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
     </section>

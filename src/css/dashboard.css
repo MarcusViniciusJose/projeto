@@ -90,7 +90,6 @@ li {
   width: 100%;
   padding: 36px 24px;
   font-family: var(--poppins);
-  max-height: calc(100vh - 56px);
   overflow-y: auto;
 }
 
@@ -203,10 +202,6 @@ li {
   font-weight: 600;
 }
 
-#content main .table-data .head .bx {
-  cursor: pointer;
-}
-
 #content main .table-data .order {
   flex-grow: 1;
   flex-basis: 500px;
@@ -228,24 +223,6 @@ li {
   padding: 16px 0;
 }
 
-#content main .table-data .order table tr td:first-child {
-  display: flex;
-  align-items: center;
-  grid-gap: 12px;
-  padding-left: 6px;
-}
-
-#content main .table-data .order table td img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-#content main .table-data .order table tbody tr:hover {
-  background: var(--grey);
-}
-
 #content main .table-data .todo {
   flex-grow: 1;
   flex-basis: 300px;
@@ -262,22 +239,14 @@ li {
   border-radius: 10px;
   padding: 14px 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-#content main .table-data .todo .todo-list li .bx {
-  cursor: pointer;
+.breadcrumb a {
+  color: black;
+  text-decoration: none;
 }
 
-#content main .table-data .todo .todo-list li.mulher {
-  border-left: 10px solid var(--pink);
-}
-
-#content main .table-data .todo .todo-list li.homem {
-  border-left: 10px solid var(--blue);
-}
-
-#content main .table-data .todo .todo-list li:last-child {
-  margin-bottom: 0;
+.breadcrumb a:hover {
+  color: darkgray;
 }

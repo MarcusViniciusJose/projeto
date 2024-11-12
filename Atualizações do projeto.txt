@@ -1,19 +1,9 @@
-1- Acho que dá pra tirar os 3 botões da tela de inicio, porque senão vai ficar muito redundante com o menu lateral.
+1- Nos rankings do dashboard tive que juntar tudo em apenas um container
 
-2- Na tela de vendas, seria bom se deixasse a parte do carrinho fixa. Mesmo que a gente rolasse pra baixo, a parte do carrinho ficaria parada.
+2- Ainda não sei que cores usar, então deixei tudo padronizado por enquanto
 
-3- A parte de produtos, seria bom diminuir a imagem das camisetas, eu acho que ficaria bom do mesmo tamanho que deixamos na aba de estoque. Assim caberia mais produtos na tela e ficaria melhor a visualização.
+3- Se deixar o carrinho fixo, conforme vai adicionando itens, ele acaba aumentando e escondendo os elementos na tela, ao ponto de não ser possivel ver os cards das camisetas
 
-4- A parte dos campos para preencher os dados da venda, estou sem ideias kkkkk use sua criatividade.
+4- Relatorios deixe simples por enquanto, conforme você atualizar, eu atualizo tambem
 
-5- De resto acho que é isso. Seria bom a gente finalizar a parte do css da tela de vendas pra gente fazer os testes necessários antes de começar a gerar os relatórios pra não dar problema.
-
-6- Vamos ter que criar outra tela só pra deixar as vendas registradas. Porque não da pra ficar tudo na mesma tela.
-
-7- Já fiz todos as consultas no dashboard, agora so precisa mexer um pouco no css pra deixar no padrão.
-
-8- Acrescentei um ranking dos 3 produtos mais vendidos também, a intenção é que ele fique abaixo do ranking dos 3 funcionários que mais venderam.
-
-9- No menu navbar do dashboard, precisa mexer na cor das letras. Caso queira adicionar mais alguma coisa, fique a vontade kkkkkk
-
-10- Criei a pagina de relatórios kkkkk porem precisa arrumar ela, só deixei as label e os botões dos relatórios que vamos fazer.
+5- Tive que deixar a barra de pesquisa das camisetas fora do container pq quando chama elas do js, sobreescrevia a barra
