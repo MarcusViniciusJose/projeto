@@ -45,6 +45,7 @@ $dataAtual = date('d/m/Y');
           <div class="job"><?php echo htmlspecialchars($_SESSION['user']->cargo); ?></div>
         </div>
       </div>
+      <?php include('../src/template/footer.php'); ?>
     </section>
   </section>
 

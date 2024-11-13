@@ -16,8 +16,10 @@
 <body>
     <?php include('../src/template/sidebar.php'); ?>
     <section class="home-section">
+        <header class="p-3 text-white text-center">
+            <h1>Painel de Relatórios e Desempenho</h1>
+        </header>
         <section class="main-container container">
-            <h2 class="text-center mt-4 mb-5">Painel de Relatórios e Desempenho</h2>
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="report-card">

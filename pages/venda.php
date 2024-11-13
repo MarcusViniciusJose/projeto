@@ -18,9 +18,8 @@
     <!-- Importação da Sidebar -->
     <?php include('../src/template/sidebar.php'); ?>
 
-    <!-- Header com logo e título -->
+    <!-- Header -->
     <header class="p-3 text-white text-center">
-        <img src="../src/imagens/logo2.png" alt="Logo RPM Wear" class="header-logo">
         <h1>Gerenciamento de Vendas</h1>
     </header>
 
@@ -29,16 +28,17 @@
             <!-- Barra de pesquisa -->
             <div id="search-container">
                 <input type="text" class="form-control search-bar" name="search" id="searchInput" placeholder="Pesquisar produtos..." value="<?= isset($search) ? htmlspecialchars($search) : '' ?>">
+            </div>
 
-                <!-- Ícone de Carrinho com Notificação -->
-                <div id="cart-icon-container" class="mt-3" style="position: relative; display: inline-block;">
-                    <i class="bx bx-cart" id="cart-icon" style="font-size: 30px; cursor: pointer;"></i>
-                    <!-- Notificação de Carrinho -->
-                    <span id="cart-notification" class="badge bg-danger"
-                        style="position: absolute; top: -8px; right: -8px; font-size: 14px; display: none;">
-                        0
-                    </span>
-                </div>
+            <!-- Ícone de Carrinho com Notificação em um Container -->
+            <div id="fixed-cart-container">
+                <a href="#cartModal" data-bs-toggle="modal">
+                    <div id="cart-icon-container">
+                        <i class="bx bx-cart" id="cart-icon"></i>
+                        <span id="cart-notification">0</span>
+                        <span id="cart-text">Carrinho</span>
+                    </div>
+                </a>
             </div>
 
             <!-- Container de produtos -->
@@ -48,6 +48,7 @@
                 </div>
             </div>
         </div>
+        <?php include('../src/template/footer.php'); ?>
     </section>
 
     <!-- Modal do Carrinho -->
@@ -96,11 +97,11 @@
                         <div id="carrinho-itens">
                             <!-- Itens do carrinho serão inseridos aqui -->
                         </div>
-                        <p>Total: R$<span id="total">0,00</span></p>
+                        <p class="mt-3"><strong>Total: R$</strong><span id="total">0,00</span></p>
                     </div>
 
                     <!-- Terceira Parte: Botões para Finalizar e Limpar -->
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mt-4">
                         <button type="button" class="btn btn-danger" id="limpar-carrinho">Limpar Carrinho</button>
                         <button type="button" class="btn btn-primary" id="finalizar-venda">Finalizar Venda</button>
                     </div>

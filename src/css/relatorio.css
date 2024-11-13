@@ -11,6 +11,13 @@ body .home-section {
   background-color: #e6e6e6;
 }
 
+header {
+  background: #11101d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  justify-content: center;
+}
+
 .main-container {
   padding: 2rem;
 }

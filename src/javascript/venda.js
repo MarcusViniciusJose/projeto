@@ -39,8 +39,8 @@ function renderizarProdutos(produtosFiltrados) {
       <p>Cor: ${produto.cor}</p>
       <p>Gênero: ${produto.genero}</p>
       <p>Tamanho: ${produto.tamanho}</p>
-      <p>Quantidade em Estoque: ${produto.quantidade}</p>
-      <p>Preço: R$${produto.preco}</p>
+      <p>Quantidade: ${produto.quantidade}</p>
+      <p class="product-price">Preço: R$${produto.preco}</p>
       <button onclick="adicionarAoCarrinho(${produto.id}, '${produto.nome}', ${
       produto.preco
     })">Adicionar</button>
