@@ -67,12 +67,14 @@ function adicionarAoCarrinho(id, nome, preco) {
     carrinho.push({ id, nome, preco, quantidade: 1 }); // Caso contrário, adiciona um novo item ao carrinho
   }
   atualizarCarrinho();
+  atualizarNotificacaoCarrinho(); // Atualiza a notificação de carrinho
 }
 
 // Função para remover um produto do carrinho
 function removerDoCarrinho(id) {
   carrinho = carrinho.filter((item) => item.id !== id); // Filtra o item com o ID especificado
   atualizarCarrinho();
+  atualizarNotificacaoCarrinho(); // Atualiza a notificação de carrinho
 }
 
 // Função para atualizar o conteúdo do carrinho e o total
@@ -95,6 +97,24 @@ function atualizarCarrinho() {
     carrinhoItens.appendChild(itemDiv); // Adiciona o item ao carrinho
   });
   total.innerText = totalValor.toFixed(2); // Exibe o valor total da venda na tela
+}
+
+// Função para atualizar a notificação do carrinho (badge)
+function atualizarNotificacaoCarrinho() {
+  const notificacao = document.getElementById("cart-notification");
+  const quantidadeItens = carrinho.reduce(
+    (total, item) => total + item.quantidade,
+    0
+  ); // Conta a quantidade total de itens no carrinho
+
+  // Se houver itens no carrinho, exibe o badge com o número de itens
+  if (quantidadeItens > 0) {
+    notificacao.style.display = "inline-block";
+    notificacao.textContent = quantidadeItens; // Atualiza o número de itens no badge
+  } else {
+    // Se não houver itens, esconde o badge
+    notificacao.style.display = "none";
+  }
 }
 
 // Função para finalizar a venda
@@ -157,8 +177,7 @@ async function finalizarVenda() {
       document.getElementById("nomeCliente").value = "";
       document.getElementById("formaPagamento").value = "";
 
-      // Recarrega os produtos para refletir a atualização do estoque
-      carregarProdutos();
+      location.reload(); // Recarrega a página
     } else {
       // Exibe mensagem de erro se algo der errado
       alert("Erro ao processar a venda: " + result.mensagem);

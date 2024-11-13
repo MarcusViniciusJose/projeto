@@ -16,28 +16,20 @@ $sqlTotalVendido = "SELECT SUM(preco_venda * quantidade) AS total_vendido FROM i
 $resultTotalVendido = mysqli_query($conexao, $sqlTotalVendido);
 $total_vendido = $resultTotalVendido ? mysqli_fetch_assoc($resultTotalVendido)['total_vendido'] : 0;
 
-// Últimas 15 compras (as 15 últimas vendas)
+// Últimas 10 vendas realizadas
 $sqlUltimasCompras = "SELECT clientes.nome AS cliente, vendas.data_venda, SUM(itens.preco_venda * itens.quantidade) AS total_compra 
                       FROM vendas
                       INNER JOIN clientes ON vendas.cliente_id = clientes.id
                       INNER JOIN itens ON vendas.id = itens.venda_id
-                      GROUP BY vendas.id ORDER BY vendas.data_venda DESC LIMIT 15";
+                      GROUP BY vendas.id ORDER BY vendas.data_venda DESC LIMIT 10";
 $resultUltimasCompras = mysqli_query($conexao, $sqlUltimasCompras);
 
-$sqlRankingFuncionarios = "SELECT usuarios.nome AS funcionario, usuarios.foto AS foto, SUM(itens.preco_venda * itens.quantidade) AS total_vendas
-						   FROM vendas
-						   INNER JOIN usuarios ON vendas.funcionario_id = usuarios.id
-						   INNER JOIN itens ON vendas.id = itens.venda_id
-						   GROUP BY usuarios.id ORDER BY total_vendas DESC LIMIT 3";
-$resultRankingFuncionarios = mysqli_query($conexao, $sqlRankingFuncionarios);
-
-
-// Ranking top 3 produtos que foram mais vendidos
+// Ranking top 10 produtos que foram mais vendidos
 $sqlRankingProdutos = "SELECT produtos.nome AS produto, produtos.imagem AS imagem, SUM(itens.preco_venda * itens.quantidade) AS total_vendas
 					   FROM vendas
 					   INNER JOIN itens ON vendas.id = itens.venda_id
 					   INNER JOIN produtos ON itens.produto_id = produtos.id
-					   GROUP BY produtos.id ORDER BY total_vendas DESC LIMIT 3";
+					   GROUP BY produtos.id ORDER BY total_vendas DESC LIMIT 10";
 
 $resultRankingProdutos = mysqli_query($conexao, $sqlRankingProdutos);
 ?>
@@ -66,46 +58,9 @@ $resultRankingProdutos = mysqli_query($conexao, $sqlRankingProdutos);
 			<main>
 				<div class="head-title">
 					<div class="left">
-						<h1>Dashboard</h1>
-						<ul class="breadcrumb">
-							<li>
-								<a href="inicio.php">Início</a>
-							</li>
-							<li><i class='bx bx-chevron-right'></i></li>
-							<li>
-								<a href="cliente.php">Clientes</a>
-							</li>
-							<li><i class='bx bx-chevron-right'></i></li>
-							<li>
-								<a href="dashboard.php">Dashboard</a>
-							</li>
-							<li><i class='bx bx-chevron-right'></i></li>
-							<li>
-								<a href="estoque.php">Estoque</a>
-							</li>
-							<li><i class='bx bx-chevron-right'></i></li>
-							<li>
-								<a href="fornecedor.php">Fornecedores</a>
-							</li>
-							<li><i class='bx bx-chevron-right'></i></li>
-							<li>
-								<a href="produto.php">Produtos</a>
-							</li>
-							<li><i class='bx bx-chevron-right'></i></li>
-							<li>
-								<a href="relatorio.php">Relatórios</a>
-							</li>
-							<li><i class='bx bx-chevron-right'></i></li>
-							<li>
-								<a href="usuario.php">Usuários</a>
-							</li>
-							<li><i class='bx bx-chevron-right'></i></li>
-							<li>
-								<a href="venda.php">Vendas</a>
-							</li>
-						</ul>
+						<h1>RPM WEAR | Dashboard</h1>
 					</div>
-					<a href="../classe/pdf-dashboard.php" class="btn-download">
+					<a href="../relatorios/pdf-dashboard.php" class="btn-download">
 						<i class='bx bxs-cloud-download'></i>
 						<span class="text">Download PDF</span>
 					</a>
@@ -115,22 +70,22 @@ $resultRankingProdutos = mysqli_query($conexao, $sqlRankingProdutos);
 					<li>
 						<i class='bx bx-store-alt'></i>
 						<span class="text">
+							<p>Produtos vendidos</p>
 							<h3><?php echo $total_produtos_vendidos; ?></h3>
-							<p>Produtos Vendidos</p>
 						</span>
 					</li>
 					<li>
 						<i class='bx bxs-group'></i>
 						<span class="text">
-							<h3><?php echo $total_clientes; ?></h3>
 							<p>Clientes</p>
+							<h3><?php echo $total_clientes; ?></h3>
 						</span>
 					</li>
 					<li>
 						<i class='bx bxs-dollar-circle'></i>
 						<span class="text">
-							<h3>R$ <?php echo number_format($total_vendido, 2, ',', '.'); ?></h3>
 							<p>Total Vendido</p>
+							<h3>R$ <?php echo number_format($total_vendido, 2, ',', '.'); ?></h3>
 						</span>
 					</li>
 				</ul>
@@ -165,7 +120,7 @@ $resultRankingProdutos = mysqli_query($conexao, $sqlRankingProdutos);
 					<!-- Ranking Produtos -->
 					<div class="todo">
 						<div class="head">
-							<h3>Ranking Produtos</h3>
+							<h3>Produtos mais vendidos</h3>
 						</div>
 						<ul class="todo-list">
 							<?php
@@ -179,26 +134,7 @@ $resultRankingProdutos = mysqli_query($conexao, $sqlRankingProdutos);
 								$posicao++;
 							} ?>
 						</ul>
-
-						<!-- Ranking Funcionarios -->
-						<div class="head">
-							<h3>Ranking Funcionários</h3>
-						</div>
-						<ul class="todo-list">
-							<?php
-							$posicao = 1;
-							while ($row = mysqli_fetch_assoc($resultRankingFuncionarios)) { ?>
-								<li>
-									<img src="../src/uploads/<?php echo $row['foto']; ?>" alt="<?php echo $row['funcionario']; ?>" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px; border-radius: 50%;">
-									<p><?php echo $posicao . "º " . $row['funcionario']; ?> - R$ <?php echo number_format($row['total_vendas'], 2, ',', '.'); ?></p>
-								</li>
-							<?php
-								$posicao++;
-							} ?>
-						</ul>
 					</div>
-
-					
 				</div>
 			</main>
 		</section>
