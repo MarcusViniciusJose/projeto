@@ -1,9 +1,8 @@
-1- Nos rankings do dashboard tive que juntar tudo em apenas um container
+1- Precisa alterar a cor do X no model de vendas.
 
-2- Ainda não sei que cores usar, então deixei tudo padronizado por enquanto
+2- Ajustar o footer na pagina venda-realiza.php
 
-3- Se deixar o carrinho fixo, conforme vai adicionando itens, ele acaba aumentando e escondendo os elementos na tela, ao ponto de não ser possivel ver os cards das camisetas
+3- Crei um botão para visualização das vendas ao final da página de vendas, 
+precisa achar um lugar pra deixar ele.. da pra deixar do mesmo jeito que o carrinho so que do outro lado da página
 
-4- Relatorios deixe simples por enquanto, conforme você atualizar, eu atualizo tambem
-
-5- Tive que deixar a barra de pesquisa das camisetas fora do container pq quando chama elas do js, sobreescrevia a barra
+4- 

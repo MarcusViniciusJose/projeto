@@ -19,7 +19,7 @@ if (isset($dados['cpfCliente'], $dados['nomeCliente'], $dados['formaPagamento'],
     // Prepara a inserção na tabela de vendas
     $sqlVenda = "INSERT INTO vendas (data_venda, forma_pagamento, cliente_id, funcionario_id) 
                  VALUES (STR_TO_DATE(?, '%d/%m/%Y'), ?, (SELECT id FROM clientes WHERE cpf = ? LIMIT 1), 
-                 (SELECT id FROM usuarios WHERE nome = ? LIMIT 1))";
+                 (SELECT id FROM funcionarios WHERE nome = ? LIMIT 1))";
     $stmtVenda = $conexao->prepare($sqlVenda);
 
     // Faz a inserção da venda

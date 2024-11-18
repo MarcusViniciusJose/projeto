@@ -32,7 +32,7 @@
 
             <!-- Ícone de Carrinho com Notificação em um Container -->
             <div id="fixed-cart-container">
-                <a href="#cartModal" data-bs-toggle="modal">
+                <a href="#cartModal" data-bs-toggle="modal" data-bs-target="#cartModal">
                     <div id="cart-icon-container">
                         <i class="bx bx-cart" id="cart-icon"></i>
                         <span id="cart-notification">0</span>
@@ -47,6 +47,8 @@
                     <!-- Lista de produtos será injetada aqui -->
                 </div>
             </div>
+
+            <a href="venda-realizada.php">Vendas Realizadas</a>
         </div>
         <?php include('../src/template/footer.php'); ?>
     </section>
@@ -80,8 +82,8 @@
                             <select id="formaPagamento" name="formaPagamento" class="form-control" required>
                                 <option value="" disabled selected>Selecione a forma de pagamento</option>
                                 <option value="Dinheiro">Dinheiro</option>
-                                <option value="Débito">Débito</option>
-                                <option value="Crédito">Crédito</option>
+                                <option value="Cartão de Débito">Cartão de Débito</option>
+                                <option value="Cartão de Crédito">Cartão de Crédito</option>
                                 <option value="Pix">Pix</option>
                             </select>
                         </div>
@@ -147,12 +149,6 @@
                 });
         }
 
-        // Abrir a Modal do Carrinho
-        document.getElementById("cart-icon").addEventListener("click", function() {
-            const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
-            cartModal.show();
-        });
-
         // Função para limpar o carrinho e os inputs
         document.getElementById("limpar-carrinho").addEventListener("click", function() {
             // Limpar os itens do carrinho
@@ -162,6 +158,9 @@
             document.getElementById("nomeCliente").value = '';
             document.getElementById("formaPagamento").value = '';
             document.getElementById("total").textContent = '0,00';
+
+            // Atualizar a notificação do carrinho para 0
+            document.getElementById("cart-notification").textContent = '0';
         });
     </script>
 </body>

@@ -1,12 +1,12 @@
 <?php
-//Importando arquivos de conexao e classe de usuario
+//Importando arquivos de conexao e classe de funcionario
 include_once '../classe/conexao.php';
-include_once '../classe/class-usuario.php';
+include_once '../classe/class-funcionario.php';
 
 //Iniciando a sessão
 session_start();
 
-// Armazene o cargo do usuário
+// Armazene o cargo do funcionario
 $cargo = $_SESSION['user']->cargo;
 
 // Função para verificar permissões de acordo com o cargo
@@ -35,7 +35,7 @@ switch ($pages) {
 
   case 'dashboard.php':
   case 'fornecedor.php':
-  case 'usuario.php':
+  case 'funcionario.php':
   case 'relatorios.php':
     checkAccess(['Gerente']);
     break;
@@ -47,7 +47,7 @@ switch ($pages) {
 
 <head>
   <meta charset="UTF-8">
-  <title>Responsive Sidebar Menu</title>
+  <title>RPM WEAR | Menu</title>
   <!--  ICONES BOOTSTRAP -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <!--  CSS -->
@@ -116,6 +116,13 @@ switch ($pages) {
           <span class="tooltip">Fornecedores</span>
         </li>
         <li>
+          <a href="funcionario.php">
+            <i class='bx bx-user'></i>
+            <span class="links_name">Funcionários</span>
+          </a>
+          <span class="tooltip">Funcionários</span>
+        </li>
+        <li>
           <a href="dashboard.php">
             <i class='bx bx-grid-alt'></i>
             <span class="links_name">Dashboard</span>
@@ -128,13 +135,6 @@ switch ($pages) {
             <span class="links_name">Relatórios</span>
           </a>
           <span class="tooltip">Relatórios</span>
-        </li>
-        <li>
-          <a href="usuario.php">
-            <i class='bx bx-user'></i>
-            <span class="links_name">Usuários</span>
-          </a>
-          <span class="tooltip">Usuários</span>
         </li>
       <?php endif; ?>
 

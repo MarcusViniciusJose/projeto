@@ -70,11 +70,20 @@ function adicionarAoCarrinho(id, nome, preco) {
   atualizarNotificacaoCarrinho(); // Atualiza a notificação de carrinho
 }
 
-// Função para remover um produto do carrinho
+// Função para remover um produto do carrinho por unidade
 function removerDoCarrinho(id) {
-  carrinho = carrinho.filter((item) => item.id !== id); // Filtra o item com o ID especificado
-  atualizarCarrinho();
-  atualizarNotificacaoCarrinho(); // Atualiza a notificação de carrinho
+  const itemExistente = carrinho.find((item) => item.id === id); // Encontrar o item no carrinho
+
+  if (itemExistente) {
+    if (itemExistente.quantidade > 1) {
+      itemExistente.quantidade--;
+    } else {
+      carrinho = carrinho.filter((item) => item.id !== id);
+    }
+  }
+
+  atualizarCarrinho(); // Atualiza a visualização do carrinho
+  atualizarNotificacaoCarrinho(); // Atualiza a notificação do carrinho
 }
 
 // Função para atualizar o conteúdo do carrinho e o total

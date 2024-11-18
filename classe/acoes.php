@@ -3,19 +3,19 @@ session_start();
 
 //Importação dos arquivos de conexao e das classes
 include 'conexao.php';
-include 'class-usuario.php';
+include 'class-funcionario.php';
 
 // Função para validação de login
 if (isset($_POST['usuario']) && isset($_POST['senha'])) {
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
 
-    $consulta = mysqli_query($conexao, "SELECT id, nome, data_nascimento, cargo, login, senha, foto FROM usuarios WHERE login = '" . mysqli_real_escape_string($conexao, $usuario) . "'");
+    $consulta = mysqli_query($conexao, "SELECT id, nome, data_nascimento, cargo, login, senha, foto FROM funcionarios WHERE login = '" . mysqli_real_escape_string($conexao, $usuario) . "'");
     $dados = mysqli_fetch_assoc($consulta);
     $user = null;
 
     if ($dados != null) {
-        $user = new Usuario($dados["id"], $dados["nome"], $dados["data_nascimento"], $dados["cargo"], $dados["login"], $dados["senha"], $dados["foto"]);
+        $user = new Funcionario($dados["id"], $dados["nome"], $dados["data_nascimento"], $dados["cargo"], $dados["login"], $dados["senha"], $dados["foto"]);
     }
 
     // Gerar o hash da senha fornecida pelo usuário
@@ -47,8 +47,8 @@ function logout()
     exit;
 }
 
-// Função para inserir dados do usuário no banco de dados.
-if (isset($_POST['create_usuario'])) {
+// Função para inserir dados do funcionário no banco de dados.
+if (isset($_POST['create_funcionario'])) {
     $nome = mysqli_real_escape_string($conexao, trim($_POST['nome']));
     $data_nascimento = mysqli_real_escape_string($conexao, trim($_POST['data_nascimento']));
     $cargo = mysqli_real_escape_string($conexao, trim($_POST['cargo']));
@@ -56,10 +56,10 @@ if (isset($_POST['create_usuario'])) {
     $senha = isset($_POST['senha']) ? mysqli_real_escape_string($conexao, hash('sha256', trim($_POST['senha']))) : '';
 
     // Verificar se o login já existe
-    $verificaLogin = mysqli_query($conexao, "SELECT * FROM usuarios WHERE login = '$login'");
+    $verificaLogin = mysqli_query($conexao, "SELECT * FROM funcionarios WHERE login = '$login'");
     if (mysqli_num_rows($verificaLogin) > 0) {
         // Retorna para o formulário com um alerta
-        echo "<script>alert('Este login já está em uso. Por favor, escolha outro.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+        echo "<script>alert('Este login já está em uso. Por favor, escolha outro.'); window.location.href='../pages/forms/funcionario-create.php';</script>";
         exit();
     }
 
@@ -73,35 +73,35 @@ if (isset($_POST['create_usuario'])) {
     // Verifica se o arquivo é uma imagem real
     $check = getimagesize($_FILES["foto"]["tmp_name"]);
     if ($check === false) {
-        echo "<script>alert('Arquivo não é uma imagem.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+        echo "<script>alert('Arquivo não é uma imagem.'); window.location.href='../pages/forms/funcionario-create.php';</script>";
         $uploadOk = 0;
         exit();
     }
 
     // Verifica se o arquivo já existe
     if (file_exists($target_file)) {
-        echo "<script>alert('Desculpe, essa foto já existe.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+        echo "<script>alert('Desculpe, essa foto já existe.'); window.location.href='../pages/forms/funcionario-create.php';</script>";
         $uploadOk = 0;
         exit();
     }
 
     // Limitar o tamanho do arquivo (exemplo: 500KB)
     if ($_FILES["foto"]["size"] > 500000) {
-        echo "<script>alert('Desculpe, seu arquivo é muito grande.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+        echo "<script>alert('Desculpe, seu arquivo é muito grande.'); window.location.href='../pages/forms/funcionario-create.php';</script>";
         $uploadOk = 0;
         exit();
     }
 
     // Limitar os formatos de arquivo permitidos
     if (!in_array($imageFileType, ['jpg', 'jpeg', 'png'])) {
-        echo "<script>alert('Desculpe, somente arquivos JPG, JPEG, PNG são permitidos.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+        echo "<script>alert('Desculpe, somente arquivos JPG, JPEG, PNG são permitidos.'); window.location.href='../pages/forms/funcionario-create.php';</script>";
         $uploadOk = 0;
         exit();
     }
 
     // Verifica se $uploadOk está definido como 0 por um erro
     if ($uploadOk == 0) {
-        echo "<script>alert('Desculpe, seu arquivo não foi enviado.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+        echo "<script>alert('Desculpe, seu arquivo não foi enviado.'); window.location.href='../pages/forms/funcionario-create.php';</script>";
     } else {
         // Tenta mover o arquivo para o diretório de destino
         if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
@@ -113,24 +113,24 @@ if (isset($_POST['create_usuario'])) {
     }
 
     // Inserir o usuário no banco de dados
-    $sql = "INSERT INTO usuarios (nome, data_nascimento, cargo, login, senha, foto) 
+    $sql = "INSERT INTO funcionarios (nome, data_nascimento, cargo, login, senha, foto) 
             VALUES ('$nome', '$data_nascimento', '$cargo', '$login', '$senha', '$caminho_imagem')";
 
     mysqli_query($conexao, $sql);
 
     if (mysqli_affected_rows($conexao) > 0) {
-        $_SESSION['mensagem'] = 'Usuário criado com sucesso';
+        $_SESSION['mensagem'] = 'Funcionário criado com sucesso';
     } else {
-        $_SESSION['mensagem'] = 'Usuário não foi criado: ' . mysqli_error($conexao);
+        $_SESSION['mensagem'] = 'Funcionário não foi criado: ' . mysqli_error($conexao);
     }
 
-    header('Location: ../pages/usuario.php');
+    header('Location: ../pages/funcionario.php');
     exit;
 }
 
-// Função para atualizar dados do usuário no banco de dados.
-if (isset($_POST['update_usuario'])) {
-    $usuario_id = mysqli_real_escape_string($conexao, $_POST['usuario_id']);
+// Função para atualizar dados do funcionário no banco de dados.
+if (isset($_POST['update_funcionario'])) {
+    $funcionario_id = mysqli_real_escape_string($conexao, $_POST['funcionario_id']);
     $nome = mysqli_real_escape_string($conexao, trim($_POST['nome']));
     $data_nascimento = mysqli_real_escape_string($conexao, trim($_POST['data_nascimento']));
     $cargo = mysqli_real_escape_string($conexao, trim($_POST['cargo']));
@@ -152,28 +152,28 @@ if (isset($_POST['update_usuario'])) {
         // Verifica se o arquivo é uma imagem real
         $check = getimagesize($_FILES["foto"]["tmp_name"]);
         if ($check === false) {
-            echo "<script>alert('Arquivo não é uma imagem.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+            echo "<script>alert('Arquivo não é uma imagem.'); window.location.href='../pages/forms/funcionario-edit.php';</script>";
             $uploadOk = 0;
             exit();
         }
 
         // Verifica se o arquivo já existe
         if (file_exists($target_file)) {
-            echo "<script>alert('Desculpe, essa foto já existe.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+            echo "<script>alert('Desculpe, essa foto já existe.'); window.location.href='../pages/forms/funcionario-edit.php';</script>";
             $uploadOk = 0;
             exit();
         }
 
         // Limitar o tamanho do arquivo (exemplo: 500KB)
         if ($_FILES["foto"]["size"] > 500000) {
-            echo "<script>alert('Desculpe, seu arquivo é muito grande.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+            echo "<script>alert('Desculpe, seu arquivo é muito grande.'); window.location.href='../pages/forms/funcionario-edit.php';</script>";
             $uploadOk = 0;
             exit();
         }
 
         // Limitar os formatos de arquivo permitidos
         if (!in_array($imageFileType, ['jpg', 'jpeg', 'png'])) {
-            echo "<script>alert('Desculpe, somente arquivos JPG, JPEG, PNG são permitidos.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+            echo "<script>alert('Desculpe, somente arquivos JPG, JPEG, PNG são permitidos.'); window.location.href='../pages/forms/funcionario-edit.php';</script>";
             $uploadOk = 0;
             exit();
         }
@@ -183,19 +183,19 @@ if (isset($_POST['update_usuario'])) {
             if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
                 $caminho_imagem = "user/" . basename($_FILES["foto"]["name"]);
             } else {
-                echo "<script>alert('Desculpe, seu arquivo não foi enviado.'); window.location.href='../pages/forms/usuario-create.php';</script>";
+                echo "<script>alert('Desculpe, seu arquivo não foi enviado.'); window.location.href='../pages/forms/funcionario-edit.php';</script>";
                 exit;
             }
         } else {
             // Se o upload falhar, redireciona
-            header('Location: ../pages/forms/usuario-edit.php?id=' . $usuario_id);
+            header('Location: ../pages/forms/funcionario-edit.php?id=' . $funcionario_id);
             exit;
         }
     }
 
     // Se não houver nova imagem, mantenha a anterior
     if (empty($caminho_imagem)) {
-        $sql_current = "SELECT foto FROM usuarios WHERE id='$usuario_id'"; // Query para obter a imagem atual
+        $sql_current = "SELECT foto FROM funcionarios WHERE id='$funcionario_id'"; // Query para obter a imagem atual
         $result_current = mysqli_query($conexao, $sql_current); // Executa a query
         if ($result_current && mysqli_num_rows($result_current) > 0) {
             $current_data = mysqli_fetch_assoc($result_current); // Obtém os dados atuais
@@ -204,7 +204,7 @@ if (isset($_POST['update_usuario'])) {
     }
 
     // Atualizar os dados no banco de dados
-    $sql = "UPDATE usuarios SET nome='$nome', data_nascimento='$data_nascimento', cargo='$cargo', login='$login'";
+    $sql = "UPDATE funcionarios SET nome='$nome', data_nascimento='$data_nascimento', cargo='$cargo', login='$login'";
 
     //Caso o campo de senha fique vazio, a senha antiga prevalece
     if (!empty($senha)) {
@@ -213,32 +213,32 @@ if (isset($_POST['update_usuario'])) {
         $sql .= ", senha='$senha_hash'";
     }
 
-    $sql .= ", foto='$caminho_imagem' WHERE id='$usuario_id'";
+    $sql .= ", foto='$caminho_imagem' WHERE id='$funcionario_id'";
 
     // Executar a query de atualização
     if (mysqli_query($conexao, $sql)) {
-        $_SESSION['mensagem'] = 'Usuário atualizado com sucesso';
+        $_SESSION['mensagem'] = 'Funcionário atualizado com sucesso';
     } else {
-        $_SESSION['mensagem'] = 'Erro ao atualizar usuário: ' . mysqli_error($conexao);
+        $_SESSION['mensagem'] = 'Erro ao atualizar funcionário: ' . mysqli_error($conexao);
     }
 
-    header('Location: ../pages/usuario.php');
+    header('Location: ../pages/funcionario.php');
     exit;
 }
 
-//Função para deletar dados do usuário no banco de dados.
-if (isset($_POST['delete_usuario'])) {
-    $usuario_id = mysqli_real_escape_string($conexao, $_POST['delete_usuario']);
+//Função para deletar dados do funcionário no banco de dados.
+if (isset($_POST['delete_funcionario'])) {
+    $funcionario_id = mysqli_real_escape_string($conexao, $_POST['delete_funcionario']);
 
-    $sql = "DELETE FROM usuarios WHERE id = '$usuario_id'";
+    $sql = "DELETE FROM funcionarios WHERE id = '$funcionario_id'";
     mysqli_query($conexao, $sql);
     if (mysqli_affected_rows($conexao) > 0) {
-        $_SESSION['message'] = 'Usuário deletado com sucesso';
+        $_SESSION['mensagem'] = 'Funcionário deletado com sucesso';
     } else {
-        $_SESSION['message'] = 'Usuário não foi deletado';
+        $_SESSION['mensagem'] = 'Funcionário não foi deletado';
     }
 
-    header('Location: ../pages/fornecedor.php');
+    header('Location: ../pages/funcionario.php');
     exit;
 }
 
@@ -288,9 +288,9 @@ if (isset($_POST['delete_fornecedor'])) {
     $sql = "DELETE FROM fornecedores WHERE id = '$fornecedor_id'";
     mysqli_query($conexao, $sql);
     if (mysqli_affected_rows($conexao) > 0) {
-        $_SESSION['message'] = 'Fornecedor deletado com sucesso';
+        $_SESSION['mensagem'] = 'Fornecedor deletado com sucesso';
     } else {
-        $_SESSION['message'] = 'Fornecedor não foi deletado' . mysqli_error($conexao);
+        $_SESSION['mensagem'] = 'Fornecedor não foi deletado' . mysqli_error($conexao);
     }
 
     header('Location: ../pages/fornecedor.php');
@@ -343,9 +343,9 @@ if (isset($_POST['delete_cliente'])) {
     $sql = "DELETE FROM clientes WHERE id = '$cliente_id'";
     mysqli_query($conexao, $sql);
     if (mysqli_affected_rows($conexao) > 0) {
-        $_SESSION['message'] = 'Cliente deletado com sucesso';
+        $_SESSION['mensagem'] = 'Cliente deletado com sucesso';
     } else {
-        $_SESSION['message'] = 'Cliente não foi deletado' . mysqli_error($conexao);
+        $_SESSION['mensagem'] = 'Cliente não foi deletado' . mysqli_error($conexao);
     }
 
     header('Location: ../pages/cliente.php');
@@ -549,5 +549,111 @@ if (isset($_POST['delete_produto'])) {
     }
 
     header('Location: ../pages/produto.php');
+    exit;
+}
+
+//Função para atualizar dados do cliente no banco de dados.
+if (isset($_POST['update_venda'])) {
+    $venda_id = mysqli_real_escape_string($conexao, $_POST['venda_id']);
+    $cliente_id = mysqli_real_escape_string($conexao, $_POST['cliente_id']);
+    $forma_pagamento = mysqli_real_escape_string($conexao, $_POST['forma_pagamento']);
+    $data_venda = mysqli_real_escape_string($conexao, $_POST['data_venda']);
+
+    // Atualizar os dados da venda
+    $sql = "UPDATE vendas SET cliente_id='$cliente_id', forma_pagamento='$forma_pagamento', data_venda='$data_venda' WHERE id='$venda_id'";
+    if (!mysqli_query($conexao, $sql)) {
+        $_SESSION['mensagem'] = 'Erro ao atualizar dados da venda: ' . mysqli_error($conexao);
+        header('Location: ../pages/venda-realizada.php');
+        exit;
+    }
+
+    // Atualizar os itens da venda (quantidades)
+    foreach ($_POST['quantidade'] as $item_id => $quantidade) {
+        $quantidade = mysqli_real_escape_string($conexao, $quantidade);
+
+        // Obter o produto_id da tabela itens
+        $sql_produto = "SELECT produto_id, quantidade FROM itens WHERE id='$item_id' AND venda_id='$venda_id'";
+        $result = mysqli_query($conexao, $sql_produto);
+        $item = mysqli_fetch_assoc($result);
+
+        // Se houver mudança na quantidade do produto, atualizar o estoque
+        if ($item) {
+            $produto_id = $item['produto_id'];
+            $quantidade_anterior = $item['quantidade'];
+
+            // Verificar se a quantidade foi alterada
+            if ($quantidade != $quantidade_anterior) {
+                // Calcular a diferença de quantidade
+                $diferenca = $quantidade - $quantidade_anterior;
+
+                // Atualizar o estoque do produto
+                $sql_estoque = "UPDATE produtos SET quantidade = quantidade - $diferenca WHERE id='$produto_id'";
+                if (!mysqli_query($conexao, $sql_estoque)) {
+                    $_SESSION['mensagem'] = 'Erro ao atualizar estoque do produto: ' . mysqli_error($conexao);
+                    header('Location: ../pages/venda-realizada.php');
+                    exit;
+                }
+            }
+
+            // Atualizar a quantidade no item
+            $sql = "UPDATE itens SET quantidade='$quantidade' WHERE id='$item_id' AND venda_id='$venda_id'";
+            if (!mysqli_query($conexao, $sql)) {
+                $_SESSION['mensagem'] = 'Erro ao atualizar quantidade do item: ' . mysqli_error($conexao);
+                header('Location: ../pages/venda-realizada.php');
+                exit;
+            }
+        }
+    }
+
+    // Remover os produtos marcados para exclusão
+    if (isset($_POST['remover_produto'])) {
+        foreach ($_POST['remover_produto'] as $item_id => $value) {
+            // Obter o produto_id e quantidade do item que está sendo removido
+            $sql_produto = "SELECT produto_id, quantidade FROM itens WHERE id='$item_id' AND venda_id='$venda_id'";
+            $result = mysqli_query($conexao, $sql_produto);
+            $item = mysqli_fetch_assoc($result);
+
+            if ($item) {
+                $produto_id = $item['produto_id'];
+                $quantidade_removida = $item['quantidade'];
+
+                // Atualizar o estoque do produto
+                $sql_estoque = "UPDATE produtos SET quantidade = quantidade + $quantidade_removida WHERE id='$produto_id'";
+                if (!mysqli_query($conexao, $sql_estoque)) {
+                    $_SESSION['mensagem'] = 'Erro ao atualizar estoque do produto removido: ' . mysqli_error($conexao);
+                    header('Location: ../pages/venda-realizada.php');
+                    exit;
+                }
+            }
+
+            // Remover o produto da venda
+            $sql = "DELETE FROM itens WHERE id='$item_id' AND venda_id='$venda_id'";
+            if (!mysqli_query($conexao, $sql)) {
+                $_SESSION['mensagem'] = 'Erro ao remover produto da venda: ' . mysqli_error($conexao);
+                header('Location: ../pages/venda-realizada.php');
+                exit;
+            }
+        }
+    }
+
+    // Mensagem de sucesso ou erro final
+    $_SESSION['mensagem'] = 'Venda atualizada com sucesso';
+    header('Location: ../pages/venda-realizada.php');
+    exit;
+}
+
+//Função para deletar dados da venda no banco de dados.
+if (isset($_POST['delete_venda'])) {
+    $venda_id = mysqli_real_escape_string($conexao, $_POST['delete_venda']);
+
+    $sql = "DELETE FROM vendas WHERE id = '$venda_id'";
+    mysqli_query($conexao, $sql);
+    if (mysqli_affected_rows($conexao) > 0) {
+        $_SESSION['mensagem'] = 'Venda deletada com sucesso';
+    } else {
+        $_SESSION['mensagem'] = 'Venda não foi deletada' . mysqli_error($conexao);
+    }
+
+    header('Location: ../pages/venda-realizada.php');
     exit;
 }
