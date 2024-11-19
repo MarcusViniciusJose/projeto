@@ -157,6 +157,15 @@ header {
   font-size: 1.5em;
 }
 
+.btn-close {
+  filter: invert(1);
+  opacity: 1;
+}
+
+.btn-close:hover {
+  filter: invert(0.9);
+}
+
 .modal-body {
   background-color: #f4f5f7;
   padding: 30px;
@@ -253,9 +262,10 @@ select.form-control {
   background-color: #e55d4e;
 }
 
+/* Carrinho com notificação */
 #fixed-cart-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   right: 20px;
   background-color: #11101d;
   padding: 10px 15px;
@@ -302,6 +312,44 @@ select.form-control {
 }
 
 #fixed-cart-container a {
+  text-decoration: none;
+  outline: none;
+}
+
+/* Container de vendas realizadas */
+#fixed-sales-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #11101d;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: transform 0.3s;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+#fixed-sales-container:hover {
+  transform: scale(1.05);
+}
+
+#sales-icon {
+  font-size: 30px;
+  margin-right: 8px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#sales-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+#fixed-sales-container a {
   text-decoration: none;
   outline: none;
 }

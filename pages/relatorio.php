@@ -73,6 +73,7 @@ $sqlFornecedoresCadastrados = "SELECT nome AS fornecedor, cnpj, telefone, descri
                     <div class="report-card">
                         <label>Produtos Mais Vendidos</label>
                         <a href="#" class="btn-download" onclick="gerarPDF('produtos-vendidos')">
+                            <i class='bx bxs-cloud-download'></i>
                             <span class="text">Gerar PDF</span>
                         </a>
                     </div>
@@ -81,6 +82,7 @@ $sqlFornecedoresCadastrados = "SELECT nome AS fornecedor, cnpj, telefone, descri
                     <div class="report-card">
                         <label>Vendas Realizadas</label>
                         <a href="#" class="btn-download" onclick="gerarPDF('vendas-realizadas')">
+                            <i class='bx bxs-cloud-download'></i>
                             <span class="text">Gerar PDF</span>
                         </a>
                     </div>
@@ -89,6 +91,7 @@ $sqlFornecedoresCadastrados = "SELECT nome AS fornecedor, cnpj, telefone, descri
                     <div class="report-card">
                         <label>Status do Estoque</label>
                         <a href="#" class="btn-download" onclick="gerarPDF('status-estoque')">
+                            <i class='bx bxs-cloud-download'></i>
                             <span class="text">Gerar PDF</span>
                         </a>
                     </div>
@@ -97,6 +100,7 @@ $sqlFornecedoresCadastrados = "SELECT nome AS fornecedor, cnpj, telefone, descri
                     <div class="report-card">
                         <label>Vendas por Funcionário</label>
                         <a href="#" class="btn-download" onclick="gerarPDF('vendas-funcionarios')">
+                            <i class='bx bxs-cloud-download'></i>
                             <span class="text">Gerar PDF</span>
                         </a>
                     </div>
@@ -105,6 +109,7 @@ $sqlFornecedoresCadastrados = "SELECT nome AS fornecedor, cnpj, telefone, descri
                     <div class="report-card">
                         <label>Clientes Cadastrados</label>
                         <a href="#" class="btn-download" onclick="gerarPDF('clientes-cadastrados')">
+                            <i class='bx bxs-cloud-download'></i>
                             <span class="text">Gerar PDF</span>
                         </a>
                     </div>
@@ -113,6 +118,7 @@ $sqlFornecedoresCadastrados = "SELECT nome AS fornecedor, cnpj, telefone, descri
                     <div class="report-card">
                         <label>Fornecedores Cadastrados</label>
                         <a href="#" class="btn-download" onclick="gerarPDF('fornecedores-cadastrados')">
+                            <i class='bx bxs-cloud-download'></i>
                             <span class="text">Gerar PDF</span>
                         </a>
                     </div>

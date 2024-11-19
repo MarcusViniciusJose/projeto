@@ -57,17 +57,28 @@ h2 {
 }
 
 .btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: #007bff;
   color: #fff;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
   text-decoration: none;
   font-weight: 500;
   transition: background-color 0.3s ease;
-  display: inline-block;
-  margin-top: 1rem;
+  font-size: 1rem;
 }
 
 .btn-download:hover {
   background-color: #0056b3;
+}
+
+.btn-download i {
+  margin-right: 8px;
+  font-size: 1.5rem;
+}
+
+.btn-download span {
+  font-size: 1rem;
 }

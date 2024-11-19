@@ -1,8 +1,9 @@
-1- Precisa alterar a cor do X no model de vendas.
+1- O footer esta mais acima por causa da table vazia, conforme vai preenchendo, ele vai para o local correto
 
-2- Ajustar o footer na pagina venda-realiza.php
+2- Fiz o botão vendas realizadas
 
-3- Crei um botão para visualização das vendas ao final da página de vendas, 
-precisa achar um lugar pra deixar ele.. da pra deixar do mesmo jeito que o carrinho so que do outro lado da página
+3- Tirei o botão de gerar pdf da dashboard
 
-4- 
+4- Coloquei icone ao lado do gerar pdf nos relatorios
+
+5- Alterei um pouco da notificação da mensagem (como sua animação para aparecer)

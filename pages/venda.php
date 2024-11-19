@@ -41,6 +41,12 @@
                 </a>
             </div>
 
+            <!-- Ícone de vendas -->
+            <div id="fixed-sales-container">
+                <i id="sales-icon" class="fas fa-chart-line"></i>
+                <a href="venda-realizada.php" id="sales-text">Vendas Realizadas</a>
+            </div>
+
             <!-- Container de produtos -->
             <div id="produtos-container">
                 <div id="produtos-list">
@@ -48,7 +54,6 @@
                 </div>
             </div>
 
-            <a href="venda-realizada.php">Vendas Realizadas</a>
         </div>
         <?php include('../src/template/footer.php'); ?>
     </section>

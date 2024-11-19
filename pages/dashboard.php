@@ -60,10 +60,6 @@ $resultRankingProdutos = mysqli_query($conexao, $sqlRankingProdutos);
 					<div class="left">
 						<h1>RPM WEAR | Dashboard</h1>
 					</div>
-					<a href="../relatorios/pdf-dashboard.php" class="btn-download">
-						<i class='bx bxs-cloud-download'></i>
-						<span class="text">Download PDF</span>
-					</a>
 				</div>
 
 				<ul class="box-info">
