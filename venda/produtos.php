@@ -4,7 +4,7 @@ session_start();
 // Dados do servidor e banco de dados
 $servername = 'localhost';
 $username = 'root';
-$password = '';
+$password = 'root';
 $dbname = 'rpm';
 
 // Criação da conexão

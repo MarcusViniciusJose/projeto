@@ -21,7 +21,7 @@ $sqlUltimasCompras = "SELECT clientes.nome AS cliente, vendas.data_venda, SUM(it
                       FROM vendas
                       INNER JOIN clientes ON vendas.cliente_id = clientes.id
                       INNER JOIN itens ON vendas.id = itens.venda_id
-                      GROUP BY vendas.id ORDER BY vendas.data_venda DESC LIMIT 10";
+                      GROUP BY vendas.id ORDER BY vendas.data_venda DESC LIMIT 5";
 $resultUltimasCompras = mysqli_query($conexao, $sqlUltimasCompras);
 
 // Ranking top 10 produtos que foram mais vendidos
@@ -29,7 +29,7 @@ $sqlRankingProdutos = "SELECT produtos.nome AS produto, produtos.imagem AS image
 					   FROM vendas
 					   INNER JOIN itens ON vendas.id = itens.venda_id
 					   INNER JOIN produtos ON itens.produto_id = produtos.id
-					   GROUP BY produtos.id ORDER BY total_vendas DESC LIMIT 10";
+					   GROUP BY produtos.id ORDER BY total_vendas DESC LIMIT 3";
 
 $resultRankingProdutos = mysqli_query($conexao, $sqlRankingProdutos);
 ?>
@@ -134,6 +134,7 @@ $resultRankingProdutos = mysqli_query($conexao, $sqlRankingProdutos);
 				</div>
 			</main>
 		</section>
+		<?php include('graficos.php'); ?>
 	</section>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
