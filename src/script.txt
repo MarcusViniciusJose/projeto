@@ -142,3 +142,48 @@ INSERT INTO produtos (nome, cor, genero, tamanho, quantidade, preco, fornecedor_
 ('Camiseta Oversized Ferrari', 'Branca', 'Masculino', 'P', 25, 125.00, 1, 'uploads/camiseta9.jpg'),
 ('Camiseta Oversized Kimi', 'Branca', 'Masculino', 'H', 27, 125.00, 3, 'uploads/camiseta10.jpg'),
 ('Camiseta Oversized Old Porsche', 'Branca', 'Masculino', 'G', 15, 125.00, 2, 'uploads/camiseta5.jpg');
+
+-- Inserindo vendas
+INSERT INTO vendas (data_venda, forma_pagamento, cliente_id, funcionario_id) VALUES 
+("2024-11-20", "Cartão de Crédito", 1, 4),
+("2024-10-20", "Boleto", 2, 3),
+("2024-10-21", "Pix", 3, 6),
+("2024-09-21", "Cartão de Crédito", 4, 5),
+("2024-09-22", "Dinheiro", 5, 7),
+("2024-08-22", "Cartão de Débito", 6, 2),
+("2024-08-23", "Pix", 7, 9),
+("2024-07-23", "Cartão de Crédito", 8, 8),
+("2024-07-24", "Dinheiro", 9, 1),
+("2024-06-24", "Boleto", 10, 6),
+("2024-06-25", "Pix", 11, 10),
+("2024-05-25", "Cartão de Débito", 12, 4),
+("2024-05-26", "Dinheiro", 13, 7),
+("2024-04-26", "Cartão de Crédito", 14, 3),
+("2024-04-27", "Pix", 15, 2),
+("2024-03-27", "Boleto", 16, 1),
+("2024-03-28", "Cartão de Crédito", 17, 8),
+("2024-02-28", "Cartão de Débito", 18, 9),
+("2024-02-29", "Dinheiro", 19, 4),
+("2024-01-29", "Boleto", 20, 6);
+
+INSERT INTO itens (venda_id, produto_id, preco_venda, quantidade) VALUES 
+(1, 1, 125.00, 2), 
+(1, 2, 125.00, 1), 
+(2, 3, 125.00, 3),  
+(2, 4, 125.00, 2),
+(3, 5, 125.00, 1),  
+(3, 6, 125.00, 2),  
+(4, 7, 125.00, 1),  
+(4, 8, 125.00, 2),  
+(5, 9, 125.00, 3),  
+(5, 10, 125.00, 2), 
+(6, 1, 125.00, 1),  
+(6, 2, 125.00, 1), 
+(7, 3, 125.00, 2),  
+(7, 4, 125.00, 1),  
+(8, 5, 125.00, 2),  
+(8, 6, 125.00, 1),
+(9, 7, 125.00, 1),  
+(9, 8, 125.00, 2),  
+(10, 9, 125.00, 3),
+(10, 10, 125.00, 1); 
