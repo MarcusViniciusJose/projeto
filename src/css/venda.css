@@ -26,19 +26,19 @@ header {
 }
 
 #produtos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 82%;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f8f9fa;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .search-bar {
-  max-width: 1325px;
+  width: 82%;
   padding: 12px 20px;
   border-radius: 30px;
   border: 1px solid #ccc;
@@ -66,6 +66,11 @@ header {
   align-items: center;
   background-color: #e6e6e6;
   padding: 10px 0;
+  margin-top: 25px;
+}
+
+#produtos-list {
+  margin-top: 20px;
   width: 100%;
 }
 

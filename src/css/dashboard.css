@@ -47,49 +47,10 @@ li {
   z-index: 1000;
 }
 
-#content nav form {
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-#content nav form .form-input {
-  display: flex;
-  align-items: center;
-  height: 36px;
-}
-
-#content nav form .form-input input {
-  flex-grow: 1;
-  padding: 0 16px;
-  height: 100%;
-  border: none;
-  border-radius: 36px 0 0 36px;
-  outline: none;
-  width: 100%;
-  background-color: white;
-}
-
-#content nav form .form-input button {
-  width: 36px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--blue);
-  color: var(--light);
-  font-size: 18px;
-  border: none;
-  outline: none;
-  border-radius: 0 36px 36px 0;
-  cursor: pointer;
-}
-
 /* MAIN */
 #content main {
   width: 100%;
   padding: 36px 24px;
-  font-family: var(--poppins);
   overflow-y: auto;
 }
 

@@ -148,6 +148,7 @@ foreach ($produtos_por_mes as $ano_mes => $produtos) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatórios de Vendas</title>
+    <link rel="stylesheet" href="../src/css/grafico.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         // Gráfico de Vendas por Mês (Gráfico de Linhas)
@@ -163,6 +164,23 @@ foreach ($produtos_por_mes as $ano_mes => $produtos) {
                 curveType: 'function',
                 legend: {
                     position: 'bottom'
+                },
+                backgroundColor: '#f7f9fc',
+                colors: ['#1e88e5'],
+                titleTextStyle: {
+                    color: '#1e88e5',
+                    fontSize: 18,
+                    bold: true
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#333'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#333'
+                    }
                 }
             };
             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -178,7 +196,14 @@ foreach ($produtos_por_mes as $ano_mes => $produtos) {
         function drawGenderChart() {
             var data = google.visualization.arrayToDataTable(<?php echo json_encode($chartDataPizza); ?>);
             var options = {
-                title: 'Desempenho de Produtos Vendidos: Masculino X Feminino'
+                title: 'Produtos Vendidos: Masculino vs Feminino',
+                backgroundColor: '#f7f9fc',
+                colors: ['#1e88e5', '#ff7043'],
+                titleTextStyle: {
+                    color: '#1e88e5',
+                    fontSize: 18,
+                    bold: true
+                }
             };
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
             chart.draw(data, options);
@@ -197,22 +222,12 @@ foreach ($produtos_por_mes as $ano_mes => $produtos) {
                     title: 'Top 3 Funcionários com Mais Vendas por Mês'
                 },
                 bars: 'vertical',
-                chartArea: {
-                    width: '70%',
-                    height: '70%'
-                },
-                vAxis: {
-                    textPosition: 'none',
-                    ticks: [],
-                },
+                colors: ['#4caf50', '#ffa726', '#d32f2f'],
+                backgroundColor: '#f7f9fc',
                 legend: {
-                    position: 'top'
-                },
-                annotations: {
-                    alwaysOutside: false,
+                    position: 'top',
                     textStyle: {
-                        fontSize: 0,
-                        color: 'transparent'
+                        fontSize: 12
                     }
                 }
             };
@@ -233,7 +248,15 @@ foreach ($produtos_por_mes as $ano_mes => $produtos) {
                 chart: {
                     title: 'Produtos Mais Vendidos Mensalmente'
                 },
-                bars: 'horizontal' // Usando barras horizontais para visualização
+                bars: 'horizontal',
+                colors: ['#2196f3', '#4caf50', '#ff9800'],
+                backgroundColor: '#f7f9fc',
+                legend: {
+                    position: 'top',
+                    textStyle: {
+                        fontSize: 12
+                    }
+                }
             };
             var chart = new google.charts.Bar(document.getElementById('barchart_material'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
@@ -243,11 +266,17 @@ foreach ($produtos_por_mes as $ano_mes => $produtos) {
 
 <body>
 
-    <div id="curve_chart" style="width: 900px; height: 500px;"></div>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
-    <div id="employee_sales_chart" style="width: 900px; height: 500px;"></div>
-    <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+    <!-- Container para a primeira fileira -->
+    <div class="chart-container">
+        <div class="chart-box" id="curve_chart"></div>
+        <div class="chart-box" id="piechart"></div>
+    </div>
 
+    <!-- Container para a segunda fileira -->
+    <div class="chart-container">
+        <div class="chart-box" id="employee_sales_chart"></div>
+        <div class="chart-box" id="barchart_material"></div>
+    </div>
 </body>
 
 </html>

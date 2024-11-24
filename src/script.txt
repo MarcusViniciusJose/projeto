@@ -110,6 +110,7 @@ INSERT INTO fornecedores (nome, cnpj, telefone, descricao, status) VALUES
 ('Chic & Elegante', '01234567000289', '21977776543', 'Fornecedor de roupas sociais', 'Ativo');
 
 INSERT INTO clientes (nome, data_nascimento, cpf, telefone) VALUES
+('NA', '2024-01-01', '12345678912', '11957434321'),
 ('João Silva', '1985-03-15', '12345678900', '11987654321'),
 ('Maria Oliveira', '1990-07-22', '98765432100', '21912345678'),
 ('Carlos Pereira', '1978-01-12', '34567890100', '31923456789'),
@@ -132,16 +133,45 @@ INSERT INTO clientes (nome, data_nascimento, cpf, telefone) VALUES
 ('Beatriz Cunha', '1991-06-18', '22233344400', '31990123456');
 
 INSERT INTO produtos (nome, cor, genero, tamanho, quantidade, preco, fornecedor_id, imagem) VALUES
-('Camiseta Oversized Wolf', 'Branca', 'Masculino', 'M', 50, 125.00, 1, 'uploads/camiseta1.jpg'),
-('Camiseta Oversized Senna', 'Preta', 'Masculino', 'P', 30, 125.00, 2, 'uploads/camiseta2.jpg'),
-('Camiseta Oversized Drift King', 'Preta', 'Masculino', 'G', 20, 125.00, 1, 'uploads/camiseta3.jpg'),
-('Camiseta Oversized Hamilton', 'Branca', 'Masculino', 'M', 25, 125.00, 3, 'uploads/camiseta4.jpg'),
-('Camiseta Oversized Skyline', 'Preta', 'Masculino', 'GG', 32, 125.00, 3, 'uploads/camiseta6.jpg'),
-('Camiseta Oversized Porsche', 'Preta', 'Masculino', 'G', 18, 125.00, 2, 'uploads/camiseta7.jpg'),
-('Camiseta Oversized Alonso', 'Preta', 'Masculino', 'M', 22, 125.00, 1, 'uploads/camiseta8.jpg'),
-('Camiseta Oversized Ferrari', 'Branca', 'Masculino', 'P', 25, 125.00, 1, 'uploads/camiseta9.jpg'),
-('Camiseta Oversized Kimi', 'Branca', 'Masculino', 'H', 27, 125.00, 3, 'uploads/camiseta10.jpg'),
-('Camiseta Oversized Old Porsche', 'Branca', 'Masculino', 'G', 15, 125.00, 2, 'uploads/camiseta5.jpg');
+('Camiseta Oversized Wolf', 'Branca', 'Masculino', 'P', 30, 110.00, 1, 'uploads/camiseta1.jpg'),
+('Camiseta Oversized Senna', 'Preta', 'Masculino', 'M', 25, 120.00, 2, 'uploads/camiseta2.jpg'),
+('Camiseta Oversized Drift King', 'Preta', 'Masculino', 'G', 20, 130.00, 3, 'uploads/camiseta3.jpg'),
+('Camiseta Oversized Hamilton', 'Branca', 'Masculino', 'GG', 15, 140.00, 1, 'uploads/camiseta4.jpg'),
+('Camiseta Oversized Old Porsche', 'Branca', 'Masculino', 'P', 50, 110.00, 2, 'uploads/camiseta5.jpg'),
+('Camiseta Oversized Skyline', 'Preta', 'Masculino', 'M', 40, 120.00, 3, 'uploads/camiseta6.jpg'),
+('Camiseta Oversized Porsche', 'Preta', 'Masculino', 'G', 35, 130.00, 1, 'uploads/camiseta7.jpg'),
+('Camiseta Oversized Alonso', 'Branca', 'Masculino', 'GG', 20, 140.00, 2, 'uploads/camiseta8.jpg'),
+('Camiseta Oversized Ferrari 2004', 'Branca', 'Masculino', 'P', 30, 115.00, 3, 'uploads/camiseta9.jpg'),
+('Camiseta Oversized Kimi', 'Branca', 'Masculino', 'M', 25, 125.00, 1, 'uploads/camiseta10.jpg'),
+('Camiseta Oversized Ferrari 2004', 'Preta', 'Masculino', 'G', 40, 135.00, 2, 'uploads/camiseta11.jpg'),
+('Camiseta Oversized Hamilton', 'Preta', 'Masculino', 'GG', 20, 145.00, 3, 'uploads/camiseta12.jpg'),
+('Camiseta Oversized Senna', 'Branca', 'Masculino', 'P', 45, 110.00, 1, 'uploads/camiseta13.jpg'),
+('Camiseta Oversized Angels', 'Branca', 'Masculino', 'M', 30, 120.00, 2, 'uploads/camiseta14.jpg'),
+('Camiseta Oversized Angels', 'Preta', 'Masculino', 'G', 35, 130.00, 3, 'uploads/camiseta15.jpg'),
+('Camiseta Oversized Porsche', 'Branca', 'Masculino', 'P', 15, 110.00, 2, 'uploads/camiseta16.jpg'),
+('Camiseta Oversized Supernatural', 'Branca', 'Masculino', 'G', 35, 130.00, 3, 'uploads/camiseta17.jpg'),
+('Camiseta Oversized Supernatural', 'Preta', 'Masculino', 'GG', 40, 130.00, 2, 'uploads/camiseta18.jpg'),
+('Camiseta Oversized Niki Lauda', 'Branca', 'Masculino', 'M', 20, 140.00, 1, 'uploads/camiseta19.jpg'),
+('Camiseta Oversized Wolf', 'Branca', 'Feminino', 'P', 25, 105.00, 1, 'uploads/camiseta1.jpg'),
+('Camiseta Oversized Senna', 'Preta', 'Feminino', 'M', 20, 115.00, 2, 'uploads/camiseta2.jpg'),
+('Camiseta Oversized Drift King', 'Preta', 'Feminino', 'G', 10, 125.00, 3, 'uploads/camiseta3.jpg'),
+('Camiseta Oversized Hamilton', 'Branca', 'Feminino', 'GG', 15, 135.00, 1, 'uploads/camiseta4.jpg'),
+('Camiseta Oversized Old Porsche', 'Branca', 'Feminino', 'P', 50, 105.00, 2, 'uploads/camiseta5.jpg'),
+('Camiseta Oversized Skyline', 'Preta', 'Feminino', 'M', 35, 115.00, 3, 'uploads/camiseta6.jpg'),
+('Camiseta Oversized Porsche', 'Preta', 'Feminino', 'G', 20, 125.00, 1, 'uploads/camiseta7.jpg'),
+('Camiseta Oversized Alonso', 'Branca', 'Feminino', 'GG', 20, 135.00, 2, 'uploads/camiseta8.jpg'),
+('Camiseta Oversized Ferrari 2004', 'Branca', 'Feminino', 'P', 30, 110.00, 3, 'uploads/camiseta9.jpg'),
+('Camiseta Oversized Kimi', 'Branca', 'Feminino', 'M', 25, 120.00, 1, 'uploads/camiseta10.jpg'),
+('Camiseta Oversized Ferrari 2004', 'Preta', 'Feminino', 'G', 40, 130.00, 2, 'uploads/camiseta11.jpg'),
+('Camiseta Oversized Hamilton', 'Preta', 'Feminino', 'GG', 20, 140.00, 3, 'uploads/camiseta12.jpg'),
+('Camiseta Oversized Senna', 'Branca', 'Feminino', 'P', 25, 105.00, 1, 'uploads/camiseta13.jpg'),
+('Camiseta Oversized Angels', 'Branca', 'Feminino', 'M', 30, 115.00, 2, 'uploads/camiseta14.jpg'),
+('Camiseta Oversized Angels', 'Preta', 'Feminino', 'G', 35, 125.00, 3, 'uploads/camiseta15.jpg'),
+('Camiseta Oversized Porsche', 'Branca', 'Feminino', 'P', 15, 105.00, 2, 'uploads/camiseta16.jpg'),
+('Camiseta Oversized Supernatural', 'Branca', 'Feminino', 'G', 35, 125.00, 3, 'uploads/camiseta17.jpg'),
+('Camiseta Oversized Supernatural', 'Preta', 'Feminino', 'GG', 10, 125.00, 2, 'uploads/camiseta18.jpg'),
+('Camiseta Oversized Niki Lauda', 'Branca', 'Feminino', 'M', 20, 135.00, 1, 'uploads/camiseta19.jpg');
+
 
 -- Inserindo vendas
 INSERT INTO vendas (data_venda, forma_pagamento, cliente_id, funcionario_id) VALUES 

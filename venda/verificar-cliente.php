@@ -2,7 +2,7 @@
 $host = 'localhost';
 $dbname = 'rpm';
 $username = 'root';
-$password = 'root';
+$password = '';
 
 // Criação da conexão
 try {

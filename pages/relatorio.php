@@ -125,6 +125,7 @@ $sqlFornecedoresCadastrados = "SELECT nome AS fornecedor, cnpj, telefone, descri
                 </div>
             </div>
         </section>
+        <?php include('../src/template/footer.php'); ?>
     </section>
 
     <!-- Relatório de Produtos Mais Vendidos -->
