@@ -36,8 +36,9 @@ while ($row = $result->fetch_assoc()) {
 }
 
 // Consulta SQL para contar os produtos masculinos e femininos
-$query = "SELECT SUM(CASE WHEN genero = 'Masculino' THEN i.quantidade ELSE 0 END) AS masculino, SUM(CASE WHEN genero = 'Feminino' THEN i.quantidade ELSE 0 END) AS feminino
-          FROM itens i JOIN produtos p ON i.produto_id = p.id";
+$query = "SELECT SUM(CASE WHEN genero = 'Masculino' THEN quantidade ELSE 0 END) AS masculino,
+          SUM(CASE WHEN genero = 'Feminino' THEN quantidade ELSE 0 END) AS feminino
+          FROM produtos";
 
 $result = $conexao->query($query);
 $row = $result->fetch_assoc();
